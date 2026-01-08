@@ -13,47 +13,48 @@ body{
   font-family:'Patrick Hand',cursive;
   background:radial-gradient(circle at top,#ffe6f0,#ffc1dc,#ff9acb);
   min-height:100vh;
-  overflow-x:hidden;
 }
 .screen{
   min-height:100vh;
   display:flex;
   justify-content:center;
   align-items:center;
-  flex-direction:column;
-  text-align:center;
   padding:20px;
+  text-align:center;
 }
 .card{
-  background:white;
+  background:#111;
+  color:#fff;
   padding:25px;
   border-radius:22px;
   max-width:720px;
-  box-shadow:0 12px 35px rgba(0,0,0,.15);
-  line-height:1.75;
-  display:none;
+  width:100%;
+  box-shadow:0 12px 35px rgba(0,0,0,.4);
+  line-height:1.8;
 }
 .photo{
   width:150px;height:150px;
   border-radius:50%;
   object-fit:cover;
-  border:5px solid #ffb6c1;
+  border:4px solid #ff9acb;
   margin-bottom:15px;
 }
 button{
-  padding:10px 25px;
+  padding:10px 28px;
   border:none;
   border-radius:25px;
   font-size:18px;
   background:#ff69b4;
   color:white;
-  margin-top:15px;
+  margin:18px 0;
+  cursor:pointer;
 }
 input{
   padding:12px;
   border-radius:14px;
   border:none;
   font-size:18px;
+  width:240px;
 }
 .react span{
   font-size:26px;
@@ -62,6 +63,7 @@ input{
 }
 .heart{
   position:fixed;
+  top:-10px;
   animation:fall linear infinite;
 }
 @keyframes fall{
@@ -72,34 +74,55 @@ input{
 
 <body>
 
+<!-- PASSWORD -->
 <div class="screen" id="lock">
-  <h2>Masukin nama kamu dulu yaa 💕</h2>
-  <input id="pass" placeholder="Nama kamu...">
-  <button onclick="unlock()">Masuk 💗</button>
+  <div class="card">
+    <h2>Masukin nama kamu dulu yaa 💕</h2>
+    <input id="pass" placeholder="Nama kamu..."><br>
+    <button onclick="unlock()">Masuk 💗</button>
+  </div>
 </div>
 
-<div class="screen" id="content">
+<!-- CONTENT -->
+<div class="screen" id="content" style="display:none">
   <audio id="music" loop>
     <source src="lagu.mp3" type="audio/mpeg">
   </audio>
 
-  <div class="card" id="card">
+  <div class="card">
     <img src="foto.jpg" class="photo">
 
-    <h1 id="typing"></h1>
-    <p id="age"></p>
-    <p id="time"></p>
+    <p><b>Hari ini kamu genap 22 tahun 🎉</b></p>
 
-    <p>Selamat ulang tahun, Sayanggggg!</p>
+    <p><b>Selamat ulang tahun, Sayanggggg!</b></p>
 
-    <p>Makasih ya udah lahir dan jadi bagian paling spesial di hidup akuuu...</p>
+    <p>
+Makasih ya udah lahir dan jadi bagian paling spesial di hidup akuuu.  
+Aku bersyukurrr bangetttt bisa nemenin kamu sampai di titik ini.  
+Jujur, kehadiran kamu itu bener-bener bikin hidup aku yang tadinya biasa aja  
+jadi jauh lebih berwarna dan seru buat dijalanin setiap harinya.
+    </p>
 
-    <button onclick="next()">Lanjut 💕</button>
+    <button onclick="showMore()">Lanjut 💕</button>
 
     <div id="more" style="display:none">
-      <p>No matter what happens, I’ll always be here to support you through everything.</p>
 
-      <img src="materai-ttd.png" width="200">
+      <p>
+Aku tau aku belum bisa jadi cowok yang sempurna, apalagi kalau aku udah mulai  
+dikit-dikit ngambek nggak jelas (maafin aku yaaa).  
+Tapi aku janji bakal terus berusaha buat jadi lebih baik lagi buat kita ke depannya.
+      </p>
+
+      <p>
+Makasih banyak ya sayanggg udah mau selalu ngertiin aku, nemenin aku dalam kondisi  
+apa pun, dan selalu maafin aku kalau aku ada salah yang bikin kamu kesel.
+      </p>
+
+      <p>
+No matter what happens, I’ll always be here to support you through everything.
+      </p>
+
+      <img src="materai-ttd.png" width="200" style="margin:20px 0">
 
       <div class="react">
         <span onclick="react('💗')">💗</span>
@@ -108,6 +131,7 @@ input{
       </div>
 
       <button onclick="wa()">Balas Aku 💬</button>
+
     </div>
   </div>
 </div>
@@ -119,26 +143,16 @@ function unlock(){
   if(pass.value===PASSWORD){
     lock.style.display="none";
     content.style.display="flex";
-    card.style.display="block";
     music.play();
     confetti();
-    typing();
-    info();
+  } else {
+    alert("Salahhh 😝");
   }
 }
 
-function typing(){
-  const text="Selamat ulang tahun ke-22, Rena 💗";
-  let i=0;
-  setInterval(()=>{typing.innerHTML+=text[i++]||""},80);
+function showMore(){
+  document.getElementById("more").style.display="block";
 }
-
-function info(){
-  age.innerHTML="Hari ini kamu genap 22 tahun 🎉";
-  time.innerHTML="Kamu buka ini jam "+new Date().toLocaleTimeString();
-}
-
-function next(){more.style.display="block"}
 
 function react(e){
   const h=document.createElement("div");
@@ -152,11 +166,11 @@ function react(e){
 }
 
 function confetti(){
-  for(let i=0;i<30;i++)react("🎉");
+  for(let i=0;i<25;i++)react("🎉");
 }
 
 function wa(){
-  window.open("https://wa.me/628XXXXXXXXXX?text=Makasih%20ya%20aku%20terharu%20banget%20😭❤️");
+  window.open("https://wa.me/6281297203132?text=Makasih%20ya%20aku%20terharu%20banget%20😭❤️");
 }
 </script>
 
