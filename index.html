@@ -29,7 +29,7 @@ body{
   max-width:720px;
   width:100%;
   box-shadow:0 12px 35px rgba(0,0,0,.45);
-  line-height:1.85;
+  line-height:1.9;
   text-align:center;
 }
 .photo{
@@ -37,16 +37,21 @@ body{
   border-radius:50%;
   object-fit:cover;
   border:4px solid #ff9acb;
+  margin-bottom:10px;
+}
+.name{
+  font-size:20px;
+  font-weight:bold;
   margin-bottom:18px;
 }
 button{
-  padding:12px 30px;
+  padding:12px 32px;
   border:none;
   border-radius:30px;
   font-size:18px;
   background:#ff69b4;
   color:white;
-  margin-top:24px;
+  margin-top:22px;
   cursor:pointer;
 }
 input{
@@ -57,9 +62,14 @@ input{
   width:240px;
 }
 .react span{
-  font-size:26px;
-  margin:0 10px;
+  font-size:28px;
+  margin:0 12px;
   cursor:pointer;
+}
+.react-info{
+  font-size:14px;
+  opacity:.8;
+  margin-top:10px;
 }
 .heart{
   position:fixed;
@@ -91,10 +101,12 @@ input{
 
   <div class="card">
     <img src="foto.jpg" class="photo">
+    <div class="name">Rena Nur Ichsani Pertiwi</div>
 
     <p><b>Hari ini kamu genap 22 tahun 🎉</b></p>
     <p><b>Selamat ulang tahun, Sayanggggg!</b></p>
 
+    <!-- PARAGRAF 1 -->
     <div id="p1">
       <p>
 Makasih ya udah lahir dan jadi bagian paling spesial di hidup akuuu.
@@ -105,40 +117,43 @@ jadi jauh lebih berwarna dan seru buat dijalanin setiap harinya.
       <button onclick="next('p1','p2')">Lanjut 💕</button>
     </div>
 
+    <!-- PARAGRAF 2 -->
     <div id="p2" style="display:none">
       <p>
-Aku tau aku belum bisa jadi cowok yang sempurna, apalagi kalau aku udah mulai
-dikit-dikit ngambek nggak jelas (maafin aku yaaa).
-Tapi aku janji bakal terus berusaha buat jadi lebih baik lagi buat kita ke depannya.
+Aku tau aku belum bisa jadi cowok yang sempurna,
+apalagi kalau aku udah mulai dikit-dikit ngambek nggak jelas
+(maafin aku yaaa).
+Tapi aku janji bakal terus berusaha buat jadi lebih baik lagi
+buat kita ke depannya.
       </p>
       <button onclick="next('p2','p3')">Lanjut 💕</button>
     </div>
 
+    <!-- PARAGRAF 3 -->
     <div id="p3" style="display:none">
       <p>
 Makasih banyak ya sayanggg udah mau selalu ngertiin aku,
 nemenin aku dalam kondisi apa pun,
 dan selalu maafin aku kalau aku ada salah yang bikin kamu kesel.
+Aku tau LDR itu gak mudahhh,
+tapi makasih ya kamu tetep milih aku.
       </p>
       <button onclick="next('p3','p4')">Lanjut 💕</button>
     </div>
 
+    <!-- PARAGRAF 4 -->
     <div id="p4" style="display:none">
-      <p>
-Aku tau LDR itu gak mudahhh,
-tapi makasih ya kamu tetep milih aku dan sabar sejauh ini.
-      </p>
-      <button onclick="next('p4','closing')">Lanjut 💕</button>
-    </div>
-
-    <div id="closing" style="display:none">
       <p>
 Semoga kelakkk kita bisa selalu bersama dan ketemu terus-terusan
 tanpa harus kepisah jarak lagi yaaa🥹.
 Makanya kamu harus sehat terusssss,
 dan gaboyeh cakittttttt!
       </p>
+      <button onclick="next('p4','closing')">Lanjut 💕</button>
+    </div>
 
+    <!-- PENUTUP -->
+    <div id="closing" style="display:none">
       <p>
 Aku doain kamu selalu dikasih kebahagiaan,
 semua keinginan kamu dipermudah satu per satuuu,
@@ -146,13 +161,45 @@ dan semoga diberikan yang terbaik oleh Allah.
       </p>
 
       <p>
-<i>No matter what happens, I’ll always be here to support you through everything.</i>
+Satu hal lagi yang pengen aku bilang…
       </p>
+
+      <p>
+Terima kasih ya udah hadir di hidup aku,
+udah jadi tempat aku pulang,
+tempat aku cerita,
+tempat aku capek, marah, seneng, dan jatuh bangun.
+      </p>
+
+      <p>
+Aku mungkin gak selalu sempurna,
+kadang nyebelin,
+kadang salah,
+kadang bikin kamu kesel.
+      </p>
+
+      <p>
+Tapi satu hal yang pasti:
+aku tulus sayang sama kamu,
+dan aku mau terus berjuang bareng kamu,
+pelan-pelan,
+satu hari ke hari berikutnya.
+      </p>
+
+      <p>
+Stay sama aku ya…
+jangan pernah bosen jadi rumah buat aku pulang 🤍
+      </p>
+
+      <p><i>No matter what happens, I’ll always be here to support you through everything.</i></p>
 
       <div class="react">
         <span onclick="react('💗')">💗</span>
         <span onclick="react('😭')">😭</span>
         <span onclick="react('🥹')">🥹</span>
+      </div>
+      <div class="react-info">
+        (boleh dipencet yaa… coba aja 🤭)
       </div>
 
       <button onclick="wa()">Balas Aku 💬</button>
@@ -190,7 +237,7 @@ function react(e){
 }
 
 function confetti(){
-  for(let i=0;i<20;i++)react("🎉");
+  for(let i=0;i<18;i++)react("🎉");
 }
 
 function wa(){
