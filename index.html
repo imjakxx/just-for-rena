@@ -186,7 +186,28 @@ input{
     transform:translateX(6px);
     opacity:1;
   }
+}/* === LOGIN MICRO ANIMATION === */
+.card.success{
+  animation:loginSuccess .4s ease;
 }
+
+@keyframes loginSuccess{
+  0%{transform:scale(.97)}
+  50%{transform:scale(1.02)}
+  100%{transform:scale(1)}
+}
+
+input.error{
+  animation:shake .3s ease;
+}
+
+@keyframes shake{
+  0%{transform:translateX(0)}
+  25%{transform:translateX(-5px)}
+  50%{transform:translateX(5px)}
+  75%{transform:translateX(-3px)}
+  100%{transform:translateX(0)}
+  }
 
 @media (min-width:1024px){
   .card{
@@ -203,12 +224,20 @@ input{
 <div class="screen" id="lock">
   <div class="card">
     <div class="accent emoji-heart">💗</div>
-    <h2>Hai kamu 🤍</h2>
-    <p>Sebelum masuk,<br>inget satu hal kecil dulu ya.</p>
+    <h2>Hai Renaaa 🤍</h2>
+    <p>
+Sebelum lanjut,<br>
+tebak-tebakan dulu kita… kamu pasti tau lah jawabannya wkwkwk
+</p>
     <input id="pass" placeholder="••">
-    <div class="hint">petunjuk kecil: tanggal jadian kita 💗<br>(16 Agustus 2025)</div>
+    <div class="hint">
+  cluenya: ytta wkwkwk<br>
+  <small>kalo masih gak tau… parah sih 😭 tanya Jaki sana</small>
+</div>
     <button onclick="unlock()">Masuk 💕</button>
-    <small>pelan-pelan bacanya…<br>ini aku bikinnya sambil OTW ke kamu 🤍</small>
+    <small>
+ini semua dari aku ☁️
+</small>
   </div>
 </div>
 
@@ -391,15 +420,36 @@ const PASSWORD="16";
 let current=1,total=7;
 
 function unlock(){
-  if(pass.value===PASSWORD){
-    lock.style.display="none";
-    content.style.display="flex";
-    music.play();
-    confetti();
-    renderDots();
-  } else alert("Salahhh 😝");
-}
+  const card = document.querySelector("#lock .card");
 
+  if(pass.value === PASSWORD){
+    card.classList.add("success");
+
+    setTimeout(()=>{
+      lock.style.display = "none";
+      content.style.display = "flex";
+      music.play();
+      confetti();
+      renderDots();
+    },300);
+
+  } else {
+    pass.classList.add("error");
+
+    const msgs = [
+      "ehh masa lupa sih 😭",
+      "yang bener dong 😏",
+      "aku tau kamu tau jawabannya kok",
+      "ytta wkwkwk 😭"
+    ];
+
+    alert(msgs[Math.floor(Math.random() * msgs.length)]);
+
+    setTimeout(()=>{
+      pass.classList.remove("error");
+    },300);
+  }
+}
 function next(n){
   document.getElementById("s"+n).style.display="none";
   document.getElementById("s"+(n+1)).style.display="block";
