@@ -39,7 +39,15 @@ body{
   from{opacity:0;transform:translateY(25px) scale(.95)}
   to{opacity:1;transform:none}
 }
-.slide{animation:slide .5s ease}
+.slide{
+  animation:slide .5s ease;
+}
+
+/* TAMBAHIN DI SINI */
+.slide.center{
+  text-align:center;
+}
+
 @keyframes slide{
   from{opacity:0;transform:translateX(20px)}
   to{opacity:1;transform:none}
@@ -252,7 +260,7 @@ ini semua dari aku ☁️
     <div class="progress" id="prog"></div>
 
     <!-- SLIDE 1 -->
-    <div class="slide" id="s1">
+    <div class="slide center" id="s1">
       <img src="foto.jpg" class="photo">
       <div class="name">💗 Rena Nur Ichsani Pertiwi 💗</div>
       <p><b>Hari ini kamu genap 22 tahun 🎉</b></p>
