@@ -137,12 +137,13 @@ input{
    EMOJI ANIMATIONS (SAFE)
    ========================= */
 
-/* 💗 HEART — detak lembut */
-.heart{
+/* 💗 EMOJI HEART — detak lembut (AMAN) */
+.emoji-heart{
   display:inline-block;
-  animation:heartBeat 1.8s ease-in-out infinite;
+  animation:emojiHeartBeat 1.8s ease-in-out infinite;
 }
-@keyframes heartBeat{
+
+@keyframes emojiHeartBeat{
   0%,100%{transform:scale(1)}
   50%{transform:scale(1.18)}
 }
@@ -201,7 +202,7 @@ input{
 <!-- LOGIN -->
 <div class="screen" id="lock">
   <div class="card">
-    <div class="accent heart">💗</div>
+    <div class="accent emoji-heart">💗</div>
     <h2>Hai kamu 🤍</h2>
     <p>Sebelum masuk,<br>inget satu hal kecil dulu ya.</p>
     <input id="pass" placeholder="••">
@@ -233,7 +234,7 @@ input{
 
     <!-- SLIDE 2 -->
     <div class="slide" id="s2" style="display:none">
-      <div class="accent heart">💗</div>
+      <div class="accent emoji-heart">💗</div>
       <div class="emoline">
 Makasih ya udah lahir dan jadi bagian paling spesial di hidup akuuu.
 Aku bersyukurrr bangetttt bisa nemenin kamu sampai di titik ini.
@@ -284,7 +285,7 @@ yang mungkin selama ini sering aku lewatin.
 
     <!-- SLIDE 4 -->
     <div class="slide" id="s4" style="display:none">
-      <div class="accent heart">💗</div>
+      <div class="accent emoji-heart">💗</div>
       <div class="emoline">
 Makasih ya sayanggg udah mau ngertiin aku,
 nemenin aku dalam kondisi apa pun,
@@ -324,7 +325,7 @@ kenapa kamu ngerasa aman.
 
     <!-- SLIDE 6 -->
     <div class="slide" id="s6" style="display:none">
-      <div class="accent heart">💗</div>
+      <div class="accent emoji-heart">💗</div>
       <div class="emoline">
 Boleh aku egois sedikit di sini?
 
