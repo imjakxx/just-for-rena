@@ -319,7 +319,7 @@ ini semua dari aku ☁️
 
     <!-- SLIDE 2 -->
     <div class="slide" id="s2" style="display:none">
-      <div class="accent emoji-heart">💗</div>
+      <div class="accent emoji-float">💌</div>
       <div class="emoline">
 Makasih ya udah lahir dan jadi bagian paling spesial di hidup akuuu.
 Aku bersyukurrr bangetttt bisa nemenin kamu sampai di titik ini.
@@ -334,12 +334,12 @@ aku masih bersyukur tiap hari,
 karena semesta ngenalin aku ke kamu 🤍
       </div>
       <small>(aku nulis ini sambil senyum sendiri)</small>
-      <button onclick="next(2)">Lanjut ya…</button>
+      <button onclick="next(2)">Lanjut 💕</button>
     </div>
 
     <!-- SLIDE 3 -->
     <div class="slide" id="s3" style="display:none">
-      <div class="accent calm">🤍</div>
+      <div class="accent emoji-glow">✨</div>
       <div class="emoline">
 Aku tau aku belum sempurna,
 kadang nyebelin,
@@ -370,7 +370,7 @@ yang mungkin selama ini sering aku lewatin.
 
     <!-- SLIDE 4 -->
     <div class="slide" id="s4" style="display:none">
-      <div class="accent emoji-heart">💗</div>
+      <div class="accent emoji-tear">🥹</div>
       <div class="emoline">
 Makasih ya sayanggg udah mau ngertiin aku,
 nemenin aku dalam kondisi apa pun,
@@ -390,7 +390,7 @@ dan tetep milih aku sejauh ini 🤍
 
     <!-- SLIDE 5 -->
     <div class="slide" id="s5" style="display:none">
-      <div class="accent hope">🌸</div>
+      <div class="accent emoji-heartbeat">🤍</div>
       <div class="emoline">
 Aku doain kamu selalu dikasih kebahagiaan,
 semua keinginan kamu dipermudah satu per satuuu,
@@ -410,7 +410,7 @@ kenapa kamu ngerasa aman.
 
     <!-- SLIDE 6 -->
     <div class="slide" id="s6" style="display:none">
-      <div class="accent emoji-heart">💗</div>
+      <div class="accent emoji-end">🌙</div>
       <div class="emoline">
 Boleh aku egois sedikit di sini?
 
@@ -595,6 +595,78 @@ function fadeOutMusic(){
     }
   }, 100);
 }
+/* =========================
+   EMOJI ANIMATION PER SLIDE
+   ========================= */
+
+/* SLIDE 2 — 💌 (romantis, lembut) */
+.emoji-float{
+  animation: float 3s ease-in-out infinite;
+}
+@keyframes float{
+  0%,100%{
+    transform: translateY(0);
+  }
+  50%{
+    transform: translateY(-8px);
+  }
+}
+
+/* SLIDE 3 — ✨ (apresiasi, glow halus) */
+.emoji-glow{
+  animation: glow 2.5s ease-in-out infinite;
+}
+@keyframes glow{
+  0%,100%{
+    text-shadow: 0 0 6px rgba(255,255,255,.4);
+  }
+  50%{
+    text-shadow: 0 0 14px rgba(255,255,255,.9);
+  }
+}
+
+/* SLIDE 4 — 🥹 (emosional, terharu) */
+.emoji-tear{
+  animation: tearPulse 2.4s ease-in-out infinite;
+}
+@keyframes tearPulse{
+  0%,100%{
+    transform: scale(1);
+    opacity: .85;
+  }
+  50%{
+    transform: scale(1.12);
+    opacity: 1;
+  }
+}
+
+/* SLIDE 5 — 🤍 (serius, komitmen) */
+.emoji-heartbeat{
+  animation: heartbeat 2.2s ease-in-out infinite;
+}
+@keyframes heartbeat{
+  0%,100%{
+    transform: scale(1);
+  }
+  50%{
+    transform: scale(1.15);
+  }
+}
+
+/* SLIDE TERAKHIR — 🌙 (penutup, tenang) */
+.emoji-end{
+  animation: endFade 3s ease-in-out infinite;
+}
+@keyframes endFade{
+  0%,100%{
+    opacity: .6;
+    transform: scale(1);
+  }
+  50%{
+    opacity: 1;
+    transform: scale(1.08);
+  }
+    }
 </script>
 
 </body>
