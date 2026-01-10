@@ -43,21 +43,65 @@ body{
   animation:slide .5s ease;
 }
 
-/* TAMBAHIN DI SINI */
 .slide.center{
   text-align:center;
 }
 
 @keyframes slide{
-  from{opacity:0;transform:translateX(20px)}
-  to{opacity:1;transform:none}
+  from{
+    opacity:0;
+    transform:translateX(20px);
+  }
+  to{
+    opacity:1;
+    transform:none;
+  }
+}
+/* === STEP 2: ANIMASI URUTAN SLIDE 1 === */
+.s1-photo{
+  opacity:0;
+  animation:fadeUp .6s ease forwards;
+}
+
+.s1-name{
+  opacity:0;
+  animation:fadeUp .6s ease forwards;
+  animation-delay:.25s;
+}
+
+.s1-text{
+  opacity:0;
+  animation:fadeUp .6s ease forwards;
+  animation-delay:.45s;
+}
+
+@keyframes fadeUp{
+  from{
+    opacity:0;
+    transform:translateY(16px);
+  }
+  to{
+    opacity:1;
+    transform:none;
+  }
 }
 .photo{
-  width:150px;height:150px;
+  width:150px;
+  height:150px;
   border-radius:50%;
   object-fit:cover;
   border:5px solid rgba(255,95,162,.8);
   margin-bottom:10px;
+}
+
+#s1 .photo{
+  animation:photoBreath 4s ease-in-out infinite;
+  box-shadow:0 0 18px rgba(255,95,162,.45);
+}
+
+@keyframes photoBreath{
+  0%,100%{transform:scale(1)}
+  50%{transform:scale(1.04)}
 }
 .name{
   font-size:22px;
@@ -265,8 +309,8 @@ ini semua dari aku ☁️
       <div class="name">💗 Rena Nur Ichsani Pertiwi 💗</div>
       <p><b>Hari ini kamu genap 22 tahun 🎉</b></p>
       <p><b>Selamat ulang tahun, Sayanggggg!</b></p>
-      <small>(yang hari ini lagi aku tuju 🤍)</small>
-      <button onclick="next(1)">Pelan-pelan 💗</button>
+      <small>(hari ini sepenuhnya tentang kamu)</small>
+      <button onclick="next(1)">Gas Dikit 🤍</button>
     </div>
 
     <!-- SLIDE 2 -->
