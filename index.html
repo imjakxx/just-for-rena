@@ -30,7 +30,7 @@ body{
   backdrop-filter:blur(14px);
   border-radius:28px;
   padding:30px;
-  max-width:760px;
+  max-width:420px;
   width:100%;
   box-shadow:0 0 40px rgba(255,95,162,.25);
   animation:enter .6s ease;
@@ -133,6 +133,12 @@ input{
   font-size:16px;
   letter-spacing:2px;
 }
+  @media (min-width:1024px){
+  .card{
+    max-width:480px;
+    box-shadow:0 0 60px rgba(255,95,162,.35);
+  }
+  }
 </style>
 </head>
 
