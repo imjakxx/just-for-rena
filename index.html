@@ -133,12 +133,66 @@ input{
   font-size:16px;
   letter-spacing:2px;
 }
-  @media (min-width:1024px){
+  /* =========================
+   EMOJI ANIMATIONS (SAFE)
+   ========================= */
+
+/* 💗 HEART — detak lembut */
+.heart{
+  display:inline-block;
+  animation:heartBeat 1.8s ease-in-out infinite;
+}
+@keyframes heartBeat{
+  0%,100%{transform:scale(1)}
+  50%{transform:scale(1.18)}
+}
+
+/* 🤍 CALM — melayang tenang */
+.calm{
+  display:inline-block;
+  animation:calmFloat 3s ease-in-out infinite;
+}
+@keyframes calmFloat{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-6px)}
+}
+
+/* 🌸 HOPE — glow hangat */
+.hope{
+  display:inline-block;
+  animation:hopeGlow 2.6s ease-in-out infinite;
+}
+@keyframes hopeGlow{
+  0%,100%{
+    text-shadow:0 0 8px rgba(255,95,162,.4);
+  }
+  50%{
+    text-shadow:0 0 18px rgba(255,95,162,.8);
+  }
+}
+
+/* 🛤️ ROAD — perjalanan */
+.road{
+  display:inline-block;
+  animation:roadMove 3.2s ease-in-out infinite;
+}
+@keyframes roadMove{
+  0%,100%{
+    transform:translateX(0);
+    opacity:.9;
+  }
+  50%{
+    transform:translateX(6px);
+    opacity:1;
+  }
+}
+
+@media (min-width:1024px){
   .card{
     max-width:480px;
     box-shadow:0 0 60px rgba(255,95,162,.35);
   }
-  }
+}
 </style>
 </head>
 
@@ -147,7 +201,7 @@ input{
 <!-- LOGIN -->
 <div class="screen" id="lock">
   <div class="card">
-    <div class="accent">💗</div>
+    <div class="accent heart">💗</div>
     <h2>Hai kamu 🤍</h2>
     <p>Sebelum masuk,<br>inget satu hal kecil dulu ya.</p>
     <input id="pass" placeholder="••">
@@ -179,7 +233,7 @@ input{
 
     <!-- SLIDE 2 -->
     <div class="slide" id="s2" style="display:none">
-      <div class="accent">💗</div>
+      <div class="accent heart">💗</div>
       <div class="emoline">
 Makasih ya udah lahir dan jadi bagian paling spesial di hidup akuuu.
 Aku bersyukurrr bangetttt bisa nemenin kamu sampai di titik ini.
@@ -199,7 +253,7 @@ karena semesta ngenalin aku ke kamu 🤍
 
     <!-- SLIDE 3 -->
     <div class="slide" id="s3" style="display:none">
-      <div class="accent">🤍</div>
+      <div class="accent calm">🤍</div>
       <div class="emoline">
 Aku tau aku belum sempurna,
 kadang nyebelin,
@@ -230,7 +284,7 @@ yang mungkin selama ini sering aku lewatin.
 
     <!-- SLIDE 4 -->
     <div class="slide" id="s4" style="display:none">
-      <div class="accent">💗</div>
+      <div class="accent heart">💗</div>
       <div class="emoline">
 Makasih ya sayanggg udah mau ngertiin aku,
 nemenin aku dalam kondisi apa pun,
@@ -250,7 +304,7 @@ dan tetep milih aku sejauh ini 🤍
 
     <!-- SLIDE 5 -->
     <div class="slide" id="s5" style="display:none">
-      <div class="accent">🌸</div>
+      <div class="accent hope">🌸</div>
       <div class="emoline">
 Aku doain kamu selalu dikasih kebahagiaan,
 semua keinginan kamu dipermudah satu per satuuu,
@@ -270,7 +324,7 @@ kenapa kamu ngerasa aman.
 
     <!-- SLIDE 6 -->
     <div class="slide" id="s6" style="display:none">
-      <div class="accent">💗</div>
+      <div class="accent heart">💗</div>
       <div class="emoline">
 Boleh aku egois sedikit di sini?
 
@@ -306,7 +360,7 @@ I’ll always be here to support you through everything.
 
     <!-- SLIDE 7 -->
     <div class="slide" id="s7" style="display:none">
-      <div class="accent">🛤️</div>
+      <div class="accent road">🛤️</div>
       <div class="emoline">
 Sekarang mungkin kamu lagi baca ini sendirian,
 di layar kecil,
