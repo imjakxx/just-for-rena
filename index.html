@@ -274,6 +274,59 @@ input{
     opacity: 1;
   }
 }
+  /* ===============================
+   EFFECT TAMBAHAN – SLIDE 1 ONLY
+   =============================== */
+
+/* FLOATING HEART (PELAAAN, HALUS) */
+.float-heart {
+  position: fixed;
+  bottom: -20px;
+  font-size: 18px;
+  opacity: 0.6;
+  animation: floatUp 6s linear forwards;
+  pointer-events: none;
+  z-index: 1;
+}
+
+@keyframes floatUp {
+  from {
+    transform: translateY(0) scale(1);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.6;
+  }
+  to {
+    transform: translateY(-120vh) scale(1.4);
+    opacity: 0;
+  }
+}
+
+/* CONFETTI BURST (SEKALI POP) */
+.confetti {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  font-size: 20px;
+  animation: confettiPop 1.8s ease-out forwards;
+  pointer-events: none;
+  z-index: 2;
+}
+
+@keyframes confettiPop {
+  from {
+    transform: translate(0, 0) scale(0.6);
+    opacity: 1;
+  }
+  to {
+    transform: translate(
+      calc(-50px + 100px * var(--x)),
+      calc(-50px + 100px * var(--y))
+    ) scale(1.2);
+    opacity: 0;
+  }
+}
   /* =========================
    END MICRO ANIMATION
    ========================= */
@@ -560,8 +613,16 @@ function next(n){
   document.getElementById("s"+(n+1)).style.display="block";
   current=n+1;
   updateUI();
-}
 
+  /* EFFECT KHUSUS SLIDE 1 */
+  if (current === 1) {
+    confettiBurst();
+
+    spawnFloatingHeart();
+    setTimeout(spawnFloatingHeart, 800);
+    setTimeout(spawnFloatingHeart, 1600);
+  }
+}
 function back(){
   if(current>1){
     document.getElementById("s"+current).style.display="none";
@@ -646,6 +707,32 @@ function fadeOutMusic(){
     }
   }, 100);
 }
+  /* ===============================
+   EFFECT FUNCTION – SLIDE 1
+   =============================== */
+
+// Confetti POP sekali
+function confettiBurst() {
+  for (let i = 0; i < 12; i++) {
+    const c = document.createElement("div");
+    c.className = "confetti";
+    c.innerText = "🎉";
+    c.style.setProperty("--x", Math.random());
+    c.style.setProperty("--y", Math.random());
+    document.body.appendChild(c);
+    setTimeout(() => c.remove(), 1800);
+  }
+}
+
+// Floating heart pelan
+function spawnFloatingHeart() {
+  const h = document.createElement("div");
+  h.className = "float-heart";
+  h.innerText = "💗";
+  h.style.left = Math.random() * 100 + "vw";
+  document.body.appendChild(h);
+  setTimeout(() => h.remove(), 6000);
+      }
 </script>
 
 </body>
