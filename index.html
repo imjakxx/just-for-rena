@@ -167,15 +167,17 @@ input{
   animation:fall linear infinite;
 }
 @keyframes fall{
-  to{transform:translateY(110vh);op/* =========================
+  to{
+    transform:translateY(110vh);
+    opacity:0;
+  }
+}
+/* =========================
    EMOJI ANIMATIONS (SAFE)
-   FINAL — FIX SESUAI INDEX
+   FINAL — STABLE & CLEAN
    ========================= */
 
-/* =========================
-   SLIDE 1 — 💗 (PEMBUKA)
-   Hangat, hidup
-   ========================= */
+/* ===== SLIDE 1 — PEMBUKA 💗 ===== */
 .emoji-open{
   display:inline-block;
   animation: openPulse 2.6s ease-in-out infinite;
@@ -191,9 +193,7 @@ input{
   }
 }
 
-/* =========================
-   SLIDE 2 — 💌 (ROMANTIS)
-   ========================= */
+/* ===== SLIDE 2 — ROMANTIS 💌 ===== */
 .emoji-float{
   display:inline-block;
   animation: float 3s ease-in-out infinite;
@@ -203,9 +203,7 @@ input{
   50%{ transform: translateY(-8px); }
 }
 
-/* =========================
-   SLIDE 3 — ✨ (APRESIASI)
-   ========================= */
+/* ===== SLIDE 3 — APRESIASI ✨ ===== */
 .emoji-glow{
   display:inline-block;
   animation: glow 2.5s ease-in-out infinite;
@@ -219,9 +217,7 @@ input{
   }
 }
 
-/* =========================
-   SLIDE 4 — 🥹 (EMOSIONAL)
-   ========================= */
+/* ===== SLIDE 4 — EMOSIONAL 🥹 ===== */
 .emoji-tear{
   display:inline-block;
   animation: tearPulse 2.4s ease-in-out infinite;
@@ -237,9 +233,7 @@ input{
   }
 }
 
-/* =========================
-   SLIDE 5 — 🤍 (KOMITMEN)
-   ========================= */
+/* ===== SLIDE 5 — KOMITMEN 🤍 ===== */
 .emoji-heartbeat{
   display:inline-block;
   animation: slideHeartbeat 2.2s ease-in-out infinite;
@@ -249,10 +243,7 @@ input{
   50%{ transform: scale(1.15); }
 }
 
-/* =========================
-   SLIDE SEBELUM TERAKHIR — 🌙
-   TENANG / TRANSISI
-   ========================= */
+/* ===== SLIDE SEBELUM TERAKHIR — TENANG 🌙 ===== */
 .emoji-end{
   display:inline-block;
   animation: endFade 3s ease-in-out infinite;
@@ -268,10 +259,7 @@ input{
   }
 }
 
-/* =========================
-   SLIDE TERAKHIR — 🛤️
-   PERJALANAN / OTW
-   ========================= */
+/* ===== SLIDE TERAKHIR — PERJALANAN 🛤️ ===== */
 .road{
   display:inline-block;
   animation: roadMove 3.2s ease-in-out infinite;
@@ -285,16 +273,10 @@ input{
     transform: translateX(6px);
     opacity: 1;
   }
-  }
-  acity:0}
-}
-.otw{
-  margin:16px 0;
-  font-size:16px;
-  letter-spacing:2px;
 }
   /* =========================
-  /* === LOGIN MICRO ANIMATION === */
+   END MICRO ANIMATION
+   ========================= */
 .card.success{
   animation:loginSuccess .4s ease;
 }
@@ -620,9 +602,12 @@ function confetti(){
 }
 
 function wa(){
-  window.open(
-    "https://wa.me/6281297203132?text=Aku%20udah%20baca%20semuanya…%0AMakasih%20ya%20udah%20bikin%20aku%20ngerasa%20sepenting%20itu%20🤍%0AHati-hati%20di%20jalan%20dari%20Bekasi.%0AAku%20nunggu%20kamu%20di%20Jogja."
-  );
+  fadeOutMusic();
+  setTimeout(()=>{
+    window.open(
+      "https://wa.me/6281297203132?text=Aku%20udah%20baca%20semuanya…%0AMakasih%20ya%20udah%20bikin%20aku%20ngerasa%20sepenting%20itu%20🤍%0AHati-hati%20di%20jalan%20dari%20Bekasi.%0AAku%20nunggu%20kamu%20di%20Jogja."
+    );
+  },1200);
 }
 
 document.addEventListener("click",e=>{
