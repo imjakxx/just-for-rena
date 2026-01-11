@@ -584,13 +584,21 @@ function unlock(){
     card.classList.add("success");
 
     setTimeout(()=>{
-      lock.style.display = "none";
-      content.style.display = "flex";
-      music.play();
-      fadeInMusic();
-      confetti();
-      renderDots();
-    },300);
+  lock.style.display = "none";
+  content.style.display = "flex";
+  music.play();
+  fadeInMusic();
+  confetti();
+  renderDots();
+
+  /* === EFFECT KHUSUS SLIDE 1 === */
+  confettiBurst();
+
+  spawnFloatingHeart();
+  setTimeout(spawnFloatingHeart, 800);
+  setTimeout(spawnFloatingHeart, 1600);
+
+},300);
 
   } else {
     pass.classList.add("error");
@@ -621,6 +629,15 @@ function next(n){
     spawnFloatingHeart();
     setTimeout(spawnFloatingHeart, 800);
     setTimeout(spawnFloatingHeart, 1600);
+  }
+
+  /* LOVE RAIN CONTROL */
+  if (current === 2) {
+    startLoveRain();   // mulai hujan love
+  }
+
+  if (current === 7) {
+    stopLoveRain();    // stop di slide terakhir
   }
 }
 function back(){
@@ -733,6 +750,23 @@ function spawnFloatingHeart() {
   document.body.appendChild(h);
   setTimeout(() => h.remove(), 6000);
       }
+  /* ===============================
+   LOVE RAIN (SLIDE 2+)
+   =============================== */
+let loveRainInterval = null;
+
+function startLoveRain(){
+  if(loveRainInterval) return;
+
+  loveRainInterval = setInterval(()=>{
+    react("💗");
+  }, 900); // estetik, agak sering tapi aman
+}
+
+function stopLoveRain(){
+  clearInterval(loveRainInterval);
+  loveRainInterval = null;
+}
 </script>
 
 </body>
