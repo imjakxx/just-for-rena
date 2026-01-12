@@ -17,6 +17,11 @@ body{
   color:#ffe6f2;
   overflow-x:hidden;
 }
+/* === ANDROID PERFORMANCE FIX === */
+.heart, .emoji {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+}
 .screen{
   min-height:100vh;
   display:flex;
@@ -564,6 +569,12 @@ const PASSWORD="16";
 let current=1,total=7;
 const music = document.getElementById("music");
 music.volume = 0;
+// === ANDROID AUDIO FAILSAFE ===
+document.addEventListener("click", () => {
+  if (music && music.paused) {
+    music.play().catch(() => {});
+  }
+}, { once: true });
 function unlock(){
   const card = document.querySelector("#lock .card");
 
@@ -671,9 +682,14 @@ function confetti(){
 
 function wa(){
   fadeOutMusic();
+
+  const text = `makacii jakiii gantenggg, akuuu cayangg cekalii camaa jakiii,
+mwahhh mwahh mwahhhh maw cium jaki sampe pingsan 💋🫰😭`;
+
   setTimeout(()=>{
     window.open(
-      "https://wa.me/6281297203132?text=makacii%20jakiii%20gantenggg%2C%20akuuu%20%20cayangg%20cekalii%20camaa%20jakiii%2C%20mwahhh%20mwahh%20mwahhhh%20maw%20cium%20jaki%20sampe%20pingsan%20%F0%9F%92%8B%F0%9F%AB%B0%F0%9F%98%AD"
+      "https://wa.me/6281297203132?text=" + encodeURIComponent(text),
+      "_blank"
     );
   },1200);
 }
