@@ -9,6 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="image" href="foto.jpg">
 <style>
 /* ===============================
    GLOBAL RESET & SAFETY
@@ -452,7 +453,15 @@ Spesiall buat Renaa ☁️
 
     <!-- SLIDE 1 -->
     <div class="slide center" id="s1">
-  <img src="foto.jpg" class="photo s1-photo">
+  <img 
+  src="foto.jpg"
+  class="photo s1-photo"
+  width="300"
+  height="300"
+  loading="eager"
+  decoding="async"
+  alt="Rena Cantik🥰"
+/>
 
   <div class="name s1-name">
   <span class="name-heart">💗</span>
