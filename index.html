@@ -274,14 +274,14 @@ input{
   80%{transform:translateX(4px)}
   100%{transform:translateX(0)}
 }
-/* CONFETTI GEDE TENGAH — UPGRADED */
+/* CONFETTI GEDE TENGAH — SLOW & DRAMATIC */
 .confetti-big {
   position: fixed;
   top: 50%;
   left: 50%;
-  font-size: 64px; /* 🔥 DARI 42px → 64px */
+  font-size: 64px;
   transform: translate(-50%, -50%);
-  animation: confettiBig 1.6s ease-out forwards;
+  animation: confettiBig 2.4s cubic-bezier(.25,.9,.25,1) forwards;
   z-index: 999;
   pointer-events: none;
 }
@@ -289,14 +289,21 @@ input{
 @keyframes confettiBig {
   0% {
     transform: translate(-50%, -50%) scale(0.4);
-    opacity: 1;
+    opacity: 0;
   }
+
+  20% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(0.7); /* tahan dikit */
+  }
+
   60% {
-    transform: translate(-50%, -50%) scale(2.2); /* 🔥 LEDAKAN LEBIH GEDE */
+    transform: translate(-50%, -50%) scale(2.2);
     opacity: 1;
   }
+
   100% {
-    transform: translate(-50%, -50%) scale(2.6);
+    transform: translate(-50%, -50%) scale(2.8);
     opacity: 0;
   }
 }
