@@ -25,8 +25,6 @@ body {
   color: #ffe6f2;
   overflow-x: hidden;
   padding-bottom: env(safe-area-inset-bottom, 0px);
-}
-  /* ANTI KESELEK SELECT */
   user-select: none;
   -webkit-user-select: none;
 }
@@ -626,6 +624,7 @@ function unlock(){
     setTimeout(()=>{
       lock.style.display = "none";
       content.style.display = "flex";
+      onSlideEnter(1);
       music.play();
       fadeInMusic();
       renderDots();
@@ -664,16 +663,10 @@ function next(n){
   current = n+1;
   updateUI();
 
-  if(current === 1){
-    confettiBurst();
-    spawnFloatingHeart();
-    setTimeout(spawnFloatingHeart, 800);
-    setTimeout(spawnFloatingHeart, 1600);
-  }
-
   if(current === 2){
     startLoveRain();
   }
+  onSlideEnter(current);
 }
 
 function back(){
@@ -684,6 +677,7 @@ function back(){
     current--;
     updateUI();
   }
+  onSlideEnter(current);
 }
 
 function updateUI(){
@@ -765,7 +759,14 @@ function confettiBurst(){
     setTimeout(()=>c.remove(),1800);
   }
 }
-
+function onSlideEnter(slideNumber){
+  if(slideNumber === 1){
+    confettiBurst();
+    spawnFloatingHeart();
+    setTimeout(spawnFloatingHeart, 800);
+    setTimeout(spawnFloatingHeart, 1600);
+  }
+    }
 function spawnFloatingHeart(){
   const h=document.createElement("div");
   h.className="float-heart";
