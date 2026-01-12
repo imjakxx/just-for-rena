@@ -678,8 +678,8 @@ function wa(){
   },1200);
 }
 
-document.addEventListener("click",e=>{
-  if(e.target.tagName==="BUTTON")return;
+document.addEventListener("click", e => {
+  if(!e.target.closest(".react")) return;
   react("💗");
 });
 
