@@ -531,7 +531,7 @@ let current = 1, total = 7;
 
 let loveRainInterval = null;
 let emojiRainInterval = null;
-let slide1Played = false; // ⬅️ PENTING
+let slide1Played = false; // penting: biar slide 1 cuma sekali
 
 const music = document.getElementById("music");
 music.volume = 0;
@@ -551,10 +551,10 @@ document.addEventListener("click", () => {
 function unlock(){
   const card = document.querySelector("#lock .card");
 
-  if(pass.value === PASSWORD){
+  if (pass.value === PASSWORD) {
     card.classList.add("success");
 
-    setTimeout(()=>{
+    setTimeout(() => {
       lock.style.display = "none";
       content.style.display = "flex";
 
@@ -563,7 +563,7 @@ function unlock(){
       music.play();
       fadeInMusic();
       renderDots();
-    },300);
+    }, 300);
 
   } else {
     pass.classList.add("error");
@@ -579,7 +579,7 @@ function unlock(){
     ];
 
     alert(msgs[Math.floor(Math.random() * msgs.length)]);
-    setTimeout(()=>pass.classList.remove("error"),300);
+    setTimeout(() => pass.classList.remove("error"), 300);
   }
 }
 
@@ -589,20 +589,20 @@ function unlock(){
 function next(n){
   stopEmojiRain();
 
-  document.getElementById("s"+n).style.display="none";
-  document.getElementById("s"+(n+1)).style.display="block";
-  current = n+1;
+  document.getElementById("s"+n).style.display = "none";
+  document.getElementById("s"+(n+1)).style.display = "block";
+  current = n + 1;
   updateUI();
 
   onSlideEnter(current);
 }
 
 function back(){
-  if(current > 1){
+  if (current > 1) {
     stopEmojiRain();
 
-    document.getElementById("s"+current).style.display="none";
-    document.getElementById("s"+(current-1)).style.display="block";
+    document.getElementById("s"+current).style.display = "none";
+    document.getElementById("s"+(current-1)).style.display = "block";
     current--;
     updateUI();
 
@@ -613,15 +613,15 @@ function back(){
 function updateUI(){
   renderDots();
   backBtn.style.display = current > 1 ? "block" : "none";
-  window.scrollTo({top:0,behavior:'smooth'});
+  window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
 function renderDots(){
-  let html="";
-  for(let i=1;i<=total;i++){
-    html+=`<span class="dot ${i<=current?'active':''}"></span>`;
+  let html = "";
+  for (let i = 1; i <= total; i++) {
+    html += `<span class="dot ${i <= current ? "active" : ""}"></span>`;
   }
-  prog.innerHTML=html;
+  prog.innerHTML = html;
 }
 
 /* ===============================
@@ -629,8 +629,8 @@ function renderDots(){
    =============================== */
 function onSlideEnter(slide){
 
-  // SLIDE 1 — sekali aja
-  if(slide === 1 && !slide1Played){
+  // SLIDE 1 — confetti + delay love rain
+  if (slide === 1 && !slide1Played) {
     slide1Played = true;
 
     bigConfettiExplosion();
@@ -642,20 +642,15 @@ function onSlideEnter(slide){
     startLoveRainSmooth();
   }
 
-  // SLIDE 2–5 — love rain jalan normal
-  if(slide >= 2 && slide <= 5){
-    startLoveRain();
-  }
-
-  // SLIDE 6 — emoji mode
-  if(slide === 6){
+  // SLIDE 6 — stop love rain (emoji mode)
+  if (slide === 6) {
     stopLoveRain();
   }
 
-  // SLIDE 7 — clean (tapi ga matiin permanen)
-  if(slide === 7){
+  // SLIDE 7 — bersih total
+  if (slide === 7) {
+    stopLoveRain();
     stopEmojiRain();
-    stopLoveRain();
   }
 }
 
@@ -663,39 +658,32 @@ function onSlideEnter(slide){
    HEART / EMOJI SPAWN
    =============================== */
 function react(e){
-  if(document.querySelectorAll(".heart").length > 25) return;
+  if (document.querySelectorAll(".heart").length > 25) return;
 
   const h = document.createElement("div");
   h.className = "heart";
   h.innerText = e;
-  h.style.left = Math.random()*100+"vw";
+  h.style.left = Math.random() * 100 + "vw";
   h.style.fontSize = "26px";
   h.style.animationDuration = "4s";
   document.body.appendChild(h);
-  setTimeout(()=>h.remove(),4000);
+
+  setTimeout(() => h.remove(), 4000);
 }
 
 /* ===============================
-   LOVE RAIN
+   LOVE RAIN (START DI SLIDE 1 + DELAY)
    =============================== */
-function startLoveRain(){
-  if(loveRainInterval) return;
-
-  loveRainInterval = setInterval(()=>{
-    react("💗");
-  },900);
-}
-
 function startLoveRainSmooth(){
-  if(loveRainInterval) return;
+  if (loveRainInterval) return;
 
-  setTimeout(()=>{
-    if(!loveRainInterval){
-      loveRainInterval = setInterval(()=>{
+  setTimeout(() => {
+    if (!loveRainInterval) {
+      loveRainInterval = setInterval(() => {
         react("💗");
-      },1200);
+      }, 900);
     }
-  },1400);
+  }, 1400);
 }
 
 function stopLoveRain(){
@@ -710,9 +698,9 @@ function startEmojiRain(emoji){
   stopLoveRain();
   stopEmojiRain();
 
-  emojiRainInterval = setInterval(()=>{
+  emojiRainInterval = setInterval(() => {
     react(emoji);
-  },700);
+  }, 700);
 }
 
 function stopEmojiRain(){
@@ -724,71 +712,79 @@ function stopEmojiRain(){
    EFFECT SLIDE 1
    =============================== */
 function confettiBurst(){
-  for(let i=0;i<12;i++){
-    const c=document.createElement("div");
-    c.className="confetti";
-    c.innerText="🎉";
-    c.style.setProperty("--x",Math.random());
-    c.style.setProperty("--y",Math.random());
+  for (let i = 0; i < 12; i++) {
+    const c = document.createElement("div");
+    c.className = "confetti";
+    c.innerText = "🎉";
+    c.style.setProperty("--x", Math.random());
+    c.style.setProperty("--y", Math.random());
     document.body.appendChild(c);
-    setTimeout(()=>c.remove(),1800);
+
+    setTimeout(() => c.remove(), 1800);
   }
 }
 
 function spawnFloatingHeart(){
-  const h=document.createElement("div");
-  h.className="float-heart";
-  h.innerText="💗";
-  h.style.left=Math.random()*100+"vw";
+  const h = document.createElement("div");
+  h.className = "float-heart";
+  h.innerText = "💗";
+  h.style.left = Math.random() * 100 + "vw";
   document.body.appendChild(h);
-  setTimeout(()=>h.remove(),6000);
+
+  setTimeout(() => h.remove(), 6000);
 }
 
 function bigConfettiExplosion(){
   const card = document.querySelector("#s1");
+  if (!card) return;
 
   card.classList.add("shake-center");
 
-  setTimeout(()=>{
+  setTimeout(() => {
     card.classList.remove("shake-center");
 
-    for(let i=0;i<10;i++){
+    for (let i = 0; i < 10; i++) {
       const c = document.createElement("div");
       c.className = "confetti-big";
       c.innerText = "🎉";
       document.body.appendChild(c);
-      setTimeout(()=>c.remove(),1400);
+
+      setTimeout(() => c.remove(), 1400);
     }
 
     confettiBurst();
-  },400);
+  }, 400);
 }
 
 /* ===============================
    MUSIC
    =============================== */
 function fadeInMusic(){
-  let vol=0;
-  music.volume=0;
-  const fade=setInterval(()=>{
-    if(vol<0.6){
-      vol+=0.02;
-      music.volume=vol;
-    } else clearInterval(fade);
-  },100);
+  let vol = 0;
+  music.volume = 0;
+
+  const fade = setInterval(() => {
+    if (vol < 0.6) {
+      vol += 0.02;
+      music.volume = vol;
+    } else {
+      clearInterval(fade);
+    }
+  }, 100);
 }
 
 function fadeOutMusic(){
-  let vol=music.volume;
-  const fade=setInterval(()=>{
-    if(vol>0){
-      vol-=0.02;
-      music.volume=Math.max(vol,0);
+  let vol = music.volume;
+
+  const fade = setInterval(() => {
+    if (vol > 0) {
+      vol -= 0.02;
+      music.volume = Math.max(vol, 0);
     } else {
       music.pause();
       clearInterval(fade);
     }
-  },100);
+  }, 100);
 }
 
 /* ===============================
@@ -802,12 +798,12 @@ function wa(){
   const text = `makacii jakiii gantenggg, akuuu cayangg cekalii camaa jakiii,
 mwahhh mwahh mwahhhh maw cium jaki sampe pingsan 💋🫰😭`;
 
-  setTimeout(()=>{
+  setTimeout(() => {
     window.open(
       "https://wa.me/6281297203132?text=" + encodeURIComponent(text),
       "_blank"
     );
-  },1200);
+  }, 1200);
 }
 </script>
 </body>
