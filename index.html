@@ -511,17 +511,21 @@ button:active {
   justify-content:center;
   gap:10px;
 }
+/* ===============================
+   BUS ONLY ANIMATION (SLIDE AKHIR)
+   =============================== */
 
-/* panah jalan animasi */
-#s7 .otw::before{
-  content:"🚗";
-  animation: drive 2.8s ease-in-out infinite;
+#s7 .bus{
+  display:inline-block;
+  animation: busRide 2.8s ease-in-out infinite;
 }
 
-@keyframes drive{
-  0%{transform:translateX(0);opacity:.4}
-  50%{transform:translateX(10px);opacity:1}
-  100%{transform:translateX(0);opacity:.4}
+@keyframes busRide{
+  0%   { transform: translateX(0) rotate(0deg); }
+  25%  { transform: translateX(3px) rotate(1deg); }
+  50%  { transform: translateX(6px) rotate(0deg); }
+  75%  { transform: translateX(3px) rotate(-1deg); }
+  100% { transform: translateX(0) rotate(0deg); }
 }
 
 /* kalimat penutup lebih “ending” */
@@ -726,7 +730,9 @@ Tujuannya cuma satu.<br><br>
 kamu🫵🫰
       </div>
 
-      <div class="otw">Bekasi ━━━━▶ Jogja 🚌</div>
+      <div class="otw">
+  Bekasi ━━━━▶ Jogja <span class="bus">🚌</span>
+      </div>
       <p><b>I’m comingg, babyyy 💋</b></p>
 
       <button onclick="wa()">Balas Aku 💬</button>
